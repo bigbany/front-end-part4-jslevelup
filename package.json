@@ -1,0 +1,24 @@
+{
+  "name": "part4",
+  "version": "1.0.0",
+  "description": "---\r ### 01. 문자",
+  "main": "main.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigbany/front-end-part4-jslevelup.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bigbany/front-end-part4-jslevelup/issues"
+  },
+  "homepage": "https://github.com/bigbany/front-end-part4-jslevelup#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}
