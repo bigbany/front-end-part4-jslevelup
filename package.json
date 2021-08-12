@@ -20,5 +20,8 @@
   "homepage": "https://github.com/bigbany/front-end-part4-jslevelup#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
