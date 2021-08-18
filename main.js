@@ -1,4 +1,3 @@
-import _ from 'lodash'
 
 // JS 데이터
 
@@ -484,3 +483,130 @@ console.log(user_copy.emails === copyUser_4.emails)
 
 console.log(user_copy)
 console.log(copyUser_4)
+
+// Ch 2. JS 데이터 실습 
+// 01. 가져오기, 내보내기
+
+
+import _ from 'lodash' // From 'node_modules'!
+
+import checkType from './getType' //getType.js
+// import getRandom from ''
+import getRandom from './getRandom' // getRandom.js
+// import { random2 , user_named as named_modules } from './getRandom2'
+import * as R from './getRandom2'
+
+// console.log(random2(), random2())
+console.log(R)
+
+console.log(_.camelCase('the hi world'))
+console.log(checkType([1,2,3]))
+console.log(getRandom(), getRandom())
+
+
+//02. lodash 사용법
+
+const usersA =[
+{ userId: '1', name: 'Hero'},
+{ userId: '2', name: 'Neo'},
+]
+const usersB =[
+{ userId: '1', name: 'Hero'},
+{ userId: '3', name: 'Amy'},
+]
+
+const usersC = usersA.concat(usersB)
+console.log('concat', usersC)
+console.log('uniqBy', _.uniqBy(usersC, 'userId'))
+
+const usersD = _.unionBy(usersA, usersB, 'userId')
+console.log('unionBy', usersD)
+
+console.log('find와 findIndex')
+
+const usersFind =[
+{ userId: '1', name: 'Hero'},
+{ userId: '2', name: 'Neo'},
+{ userId: '3', name: 'Amy'},
+{ userId: '4', name: 'Evan'},
+{ userId: '5', name: 'Lewis'}
+]
+
+const foundUser = _.find(usersFind, {name:'Amy'})
+const foundUserIndex = _.findIndex(usersFind, {name: 'Amy'})
+console.log(foundUser)
+console.log(foundUserIndex)
+
+_.remove(usersFind, { name: 'Hero'})
+console.log(usersFind)
+
+// 03. JSON (JavaSript Object Notation)
+// 자바스크립트의 객체 표기법
+
+const userJson = {
+  'name': 'hero',
+  'age': 38,
+  'emails': [
+    'first@gmail.com',
+    'Second@gmail.com'
+  ]
+}
+console.log('userJson', userJson)
+
+const strJson = JSON.stringify(userJson)
+console.log('strJson', strJson)
+console.log(typeof strJson)
+
+const obj = JSON.parse(strJson)
+console.log('strJson', strJson)
+console.log(typeof strJson)
+
+
+console.log('obj', obj)
+
+import myData from './myData.json'
+
+console.log(myData)
+
+// 04. Storage
+console.log(' 04. Storage \n\n\n')
+
+const userStore ={
+  'name': 'hero',
+  'age': 38,
+  'emails': [
+    'first@gmail.com',
+    'Second@gmail.com'
+  ]
+}
+
+localStorage.setItem('user', JSON.stringify(userStore))
+console.log(localStorage.getItem('user'))
+console.log(JSON.parse(localStorage.getItem('user')))
+// localStorage.removeItem('user') // 
+
+
+
+// localStorage.setItem('user2', JSON.stringify(userStore))
+const strLocal =localStorage.getItem('user2')
+const objLocal = JSON.parse(strLocal)
+objLocal.age = 19
+console.log('objLocal :',objLocal)
+localStorage.setItem('user2',JSON.stringify(objLocal))
+
+import axios from 'axios'
+
+function fetchMovies(){
+  axios
+  .get('https://www.omdbapi.com/?apikey=e7a4a925&s=avengers')
+  .then(res=>
+  {
+    console.log(res)
+    const h1El = document.querySelector('h1')
+    const imgEl = document.querySelector('img')
+    h1El.textContent= res.data.Search[0].Title
+    imgEl.src= res.data.Search[0].Poster
+  })
+}
+
+fetchMovies()
